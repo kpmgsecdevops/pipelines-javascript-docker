@@ -1,4 +1,9 @@
         trigger:
+- task: prisma-cloud-compute-scan@3
+  inputs:
+    scanType: 'images'
+    twistlockService: 'Prisma-compute-credentials'
+    artifact: 'ubuntu-latest'
         - main
 
         pool:
