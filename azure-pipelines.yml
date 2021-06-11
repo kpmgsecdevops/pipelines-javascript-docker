@@ -1,10 +1,6 @@
-trigger:
-- task: prisma-cloud-compute-scan@3
-  inputs:
-    scanType: 'images'
-    twistlockService: 'Prisma-compute-credentials'
-    artifact: 'pipelines-javascript-docker'
-- main
+
+        trigger:
+        - main
 
         pool:
           vmImage: 'ubuntu-latest' # set to windows-latest or another Windows vmImage for Windows builds
