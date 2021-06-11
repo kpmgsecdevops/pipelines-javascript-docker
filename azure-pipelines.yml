@@ -3,7 +3,7 @@
   inputs:
     scanType: 'images'
     twistlockService: 'Prisma-compute-credentials'
-    artifact: 'ubuntu-latest'
+    artifact: 'pipelines-javascript-docker'
         - main
 
         pool:
