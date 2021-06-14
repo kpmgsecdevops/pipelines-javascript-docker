@@ -9,6 +9,11 @@
           imageName: 'pipelines-javascript-docker'
           DockerImageName: 'azure-pipeline-project/clouddemo'
         steps:
+        - task: prisma-cloud-compute-scan@3
+          inputs:
+            scanType: 'images'
+            twistlockService: 'Prisma-compute-credentials'
+            artifact: 'pipelines-javascript-docker'
         - task: Docker@2
           displayName: Build an image
           inputs:
@@ -26,8 +31,3 @@
             Dockerfile: 'app/Dockerfile'
             command: buildAndPush
             repository: '$(DockerImageName)'
-        - task: prisma-cloud-compute-scan@3
-          inputs:
-            scanType: 'images'
-            twistlockService: 'Prisma-compute-credentials'
-            artifact: 'pipelines-javascript-docker'
