@@ -3,7 +3,7 @@
         - main
 
         pool:
-          vmImage: 'ubuntu-latest' # set to windows-latest or another Windows vmImage for Windows builds
+          vmImage: 'ubuntu-16.04' # set to windows-latest or another Windows vmImage for Windows builds
 
         variables:
           imageName: 'pipelines-javascript-docker'
