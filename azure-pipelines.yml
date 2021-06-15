@@ -10,7 +10,11 @@
           DockerImageName: 'azure-pipeline-project/clouddemo'
         steps:
 
-        
+        - task: Palo-Alto-Networks.build-release-task.custom-build-release-task.prisma-cloud-compute-scan@1
+          displayName: 'Prisma Cloud Compute Scan'
+          inputs:
+            twistlockService: 'NewEnv Connection'
+            artifact: 'pipelines-javascript-docker'
         - task: Docker@2
           displayName: Build an image
           inputs:
