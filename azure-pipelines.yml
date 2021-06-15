@@ -19,7 +19,7 @@
         - task: prisma-cloud-compute-scan@3
           inputs:
             scanType: 'images'
-            twistlockService: 'Prisma-compute-credentials'
+            twistlockService: 'Prisma-compute credentials'
             artifact: $(imageName)
         - task: Docker@2
           displayName: 'Login to Container Registry'
