@@ -9,16 +9,12 @@
           imageName: 'pipelines-javascript-docker'
           DockerImageName: 'azure-pipeline-project/clouddemo'
         steps:
+
         - task: prisma-cloud-compute-scan@3
           inputs:
             scanType: 'images'
             twistlockService: 'Prisma-compute-credentials'
-            artifact: 'ubuntu-16.04'
-        - task: prisma-cloud-compute-scan@3
-          inputs:
-            scanType: 'images'
-            twistlockService: 'Prisma-compute-credentials'
-            artifact: 'pipelines-javascript-docker'
+            artifact: $(imageName)
         - task: Docker@2
           displayName: Build an image
           inputs:
@@ -31,8 +27,11 @@
             command: login
             containerRegistry: 'gcrServiceConnection'
         - task: Docker@2
-          displayName: 'Build and push image'
+          displayName: Push image
           inputs:
-            Dockerfile: 'app/Dockerfile'
-            command: buildAndPush
-            repository: '$(DockerImageName)'
+            containerRegistry: 'gcrServiceConnection'
+            repository: $(imageName)
+            command: push
+            tags:
+                test1
+                test2
