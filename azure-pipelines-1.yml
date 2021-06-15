@@ -20,6 +20,14 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
+    - task: Prisma Cloud IaC Scan@3
+      inputs:
+        Path: '.'
+        prismaCloudService: 'Prisma IaC Scan'
+        High: '1'
+        Medium: '1'
+        Low: '1'
+        Operator: 'or'
     - task: Docker@2
       displayName: Build an image
       inputs:
