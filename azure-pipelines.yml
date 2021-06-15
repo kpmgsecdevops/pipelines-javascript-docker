@@ -14,7 +14,7 @@
           displayName: 'Prisma Cloud Compute Scan'
           inputs:
             twistlockService: 'NewEnv Connection'
-            artifact: 'pipelines-javascript-docker'
+            artifact: 'nginx:latest'
         - task: Docker@2
           displayName: Build an image
           inputs:
