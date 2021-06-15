@@ -3,13 +3,16 @@
         - main
 
         pool:
-          vmImage: 'ubuntu-16.04' # set to windows-latest or another Windows vmImage for Windows builds
+          vmImage: 'ubuntu-latest' # set to windows-latest or another Windows vmImage for Windows builds
 
         variables:
           imageName: 'pipelines-javascript-docker'
           DockerImageName: 'azure-pipeline-project/clouddemo'
         steps:
-
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '6.x'
+            checkLatest: true
         - task: Docker@2
           displayName: Build an image
           inputs:
