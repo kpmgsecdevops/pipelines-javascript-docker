@@ -10,17 +10,18 @@
           DockerImageName: 'azure-pipeline-project/clouddemo'
         steps:
 
-        - task: prisma-cloud-compute-scan@3
-          inputs:
-            scanType: 'images'
-            twistlockService: 'Prisma-compute-credentials'
-            artifact: $(imageName)
+        
         - task: Docker@2
           displayName: Build an image
           inputs:
             repository: $(imageName)
             command: build
             Dockerfile: app/Dockerfile
+        - task: prisma-cloud-compute-scan@3
+          inputs:
+            scanType: 'images'
+            twistlockService: 'Prisma-compute-credentials'
+            artifact: $(imageName)
         - task: Docker@2
           displayName: 'Login to Container Registry'
           inputs:
